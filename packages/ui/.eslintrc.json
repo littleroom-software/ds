@@ -1,0 +1,6 @@
+{
+  "extends": "@nebula/eslint-config",
+  "rules": {
+    "no-unused-vars": "off"
+  }
+}

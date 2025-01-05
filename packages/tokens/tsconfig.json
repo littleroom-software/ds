@@ -1,0 +1,4 @@
+{
+  "extends": "@nebula/typescript-config/base.json",
+  "include": ["src"]
+}
