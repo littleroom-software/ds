@@ -1,36 +1,27 @@
 export const colors = {
-  primary50: '#f3f5fc',
-  primary100: '#a6b8e6',
-  primary300: '#7086c2',
-  primary400: '#4d639f',
-  primary500: '#324b7d', // main
-  primary700: '#1d2e57',
-
-  black300: '#84848b',
-  black400: '#464649',
-  black500: '#29292b',
-  black700: '#121214',
-  black900: '#04040a', // text
-  black1000: '#000000',
-
-  white000: '#ffffff',
-  white100: '#f5f5f5',
-  white200: '#f0f0f0',
-  white400: '#e5e5e5', // border
-  white500: '#cccccc',
-  white700: '#b5b5b5',
-
-  red200: '#d03c36',
-  red500: '#b3261e',
-  red700: '#8f1c19',
-
-  yellow200: '#ffeaaa',
-  yellow500: '#ffb600',
-  yellow700: '#d89c00',
-
-  green200: '#7df67d',
-  green500: '#04b100',
-  green700: '#028b00',
+  "background": "#FFFFFF",
+  "foreground": "#0A0A0A",
+  "card": "#FFFFFF",
+  "card-foreground": "#0A0A0A",
+  "popover": "#FFFFFF",
+  "popover-foreground": "#0A0A0A",
+  "primary": "#0000ff",
+  "primary-foreground": "#FFEAEA",
+  "secondary": "#F5F5F5",
+  "secondary-foreground": "#171717",
+  "muted": "#F5F5F5",
+  "muted-foreground": "#737373",
+  "accent": "#F5F5F5",
+  "accent-foreground": "#171717",
+  "destructive": "#E60000",
+  "destructive-foreground": "#FAFAFA",
+  "border": "#E5E5E5",
+  "input": "#E5E5E5",
+  "ring": "#CC3333",
+  // "radius": "0.5rem",
+  "chart-1": "#FF6347",
+  "chart-2": "#339999",
+  "chart-3": "#266D75",
+  "chart-4": "#FFDB58",
+  "chart-5": "#FFBF00",
 }
-
-export type Colors = keyof typeof colors
