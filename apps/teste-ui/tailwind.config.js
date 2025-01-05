@@ -1,5 +1,5 @@
 // import flowbite from 'flowbite-react/tailwind';
-import { tailwind } from '@nebula/ui'
+import { tailwind } from '@nebula/react'
 import { colors } from '@nebula/tokens'
 
 /** @type {import('tailwindcss').Config} */

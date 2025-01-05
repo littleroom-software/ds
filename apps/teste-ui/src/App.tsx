@@ -1,4 +1,4 @@
-import { Button } from "@nebula/ui";
+import { Button } from "@nebula/react";
 
 export function App() {
   return (

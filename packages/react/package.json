@@ -1,5 +1,5 @@
 {
-  "name": "@nebula/ui",
+  "name": "@nebula/react",
   "version": "1.0.1",
   "description": "",
   "main": "./dist/index.js",
@@ -17,13 +17,13 @@
     "@nebula/eslint-config": "*",
     "@nebula/tokens": "*",
     "@nebula/typescript-config": "*",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
+    "@radix-ui/react-slot": "^1.1.1",
+    "class-variance-authority": "^0.7.1",
     "react": "^18.3.1",
-    "tailwind-merge": "^2.5.2"
+    "tailwind-merge": "^2.6.0"
   }
 }

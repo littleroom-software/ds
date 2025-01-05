@@ -1,4 +1,4 @@
-# @nebula/ui
+# @nebula/react
 
 ## 1.0.1
 
