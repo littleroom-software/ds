@@ -1,6 +1,6 @@
 {
-  "name": "@nebula/react",
-  "version": "1.0.1",
+  "name": "@littleroom-ui/react",
+  "version": "1.0.0-beta.4",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -14,9 +14,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@nebula/eslint-config": "*",
-    "@nebula/tokens": "*",
-    "@nebula/typescript-config": "*",
+    "@littleroom-ui/eslint-config": "*",
+    "@littleroom-ui/tokens": "*",
+    "@littleroom-ui/typescript-config": "*",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"
   },
@@ -25,5 +25,11 @@
     "class-variance-authority": "^0.7.1",
     "react": "^18.3.1",
     "tailwind-merge": "^2.6.0"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/**"
+  ]
 }

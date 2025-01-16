@@ -1,4 +1,4 @@
-import { Button } from "@nebula/react";
+import { Button } from "@littleroom-ui/react";
 
 export function App() {
   return (
@@ -6,12 +6,20 @@ export function App() {
       <Button size="sm">Default sm</Button>
       <Button>Default md</Button>
       <Button size="lg">Default lg</Button>
-      <Button variant="ghost" size="sm">Ghost sm</Button>
+      <Button variant="ghost" size="sm">
+        Ghost sm
+      </Button>
       <Button variant="ghost">Ghost md</Button>
-      <Button variant="ghost" size="lg">Ghost lg</Button>
-      <Button variant="outline" size="sm">Outline sm</Button>
+      <Button variant="ghost" size="lg">
+        Ghost lg
+      </Button>
+      <Button variant="outline" size="sm">
+        Outline sm
+      </Button>
       <Button variant="outline">Outline md</Button>
-      <Button variant="outline" size="lg">Outline lg</Button>
+      <Button variant="outline" size="lg">
+        Outline lg
+      </Button>
     </div>
-  )
+  );
 }

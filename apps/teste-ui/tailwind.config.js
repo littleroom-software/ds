@@ -1,23 +1,23 @@
 // import flowbite from 'flowbite-react/tailwind';
-import { tailwind } from '@nebula/react'
-import { colors } from '@nebula/tokens'
+import { tailwind } from "@littleroom-ui/react";
+import { colors } from "@littleroom-ui/tokens";
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*.{html,js,ts,jsx,tsx}", 
+    "./src/**/*.{html,js,ts,jsx,tsx}",
     tailwind.content({
-      base: '../../'
-    })
+      base: "../../",
+    }),
   ],
   theme: {
     extend: {
       colors: {
         ...colors,
-      }
+      },
     },
   },
   plugins: [
     // flowbite.plugin(),
   ],
-}
+};

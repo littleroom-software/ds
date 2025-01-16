@@ -1,6 +1,5 @@
 {
-  "name": "nebula",
-  "private": true,
+  "name": "littleroom",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
@@ -8,7 +7,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "prettier": "^3.4.2",
+    "semantic-release": "^23.0.2",
     "turbo": "^2.3.3",
     "typescript": "^5.7.2"
   },

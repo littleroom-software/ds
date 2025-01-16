@@ -1,4 +1,4 @@
 {
-  "extends": "@nebula/typescript-config/react.json",
+  "extends": "@littleroom-ui/typescript-config/react.json",
   "include": ["src"]
 }
