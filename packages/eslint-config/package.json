@@ -1,5 +1,5 @@
 {
-  "name": "@nebula/eslint-config",
+  "name": "@littleroom/eslint-config",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,

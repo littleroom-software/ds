@@ -1,4 +1,4 @@
-# @nebula/react
+# @littleroom/react
 
 ## 1.0.1
 
