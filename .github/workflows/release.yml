@@ -74,23 +74,22 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
-      - name: Build packages
-        run: npm run build
-
-      - name: Release @littleroom/react
+      - name: Build and Release @littleroom/react
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd packages/react
+          npx turbo build
           npx semantic-release
 
-      - name: Release @littleroom/tokens
+      - name: Build and Release @littleroom/tokens
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd packages/tokens
+          npx turbo build
           npx semantic-release
 
   deploy-storybook-prod:
