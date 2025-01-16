@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/littleroom-software/ds/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2025-01-16)
+
+
+### Bug Fixes
+
+* **ci:** prepare npm version ([422bd47](https://github.com/littleroom-software/ds/commit/422bd47e913c04a1a04f70f08a580745c5d907f6))
+
 # [1.0.0-beta.2](https://github.com/littleroom-software/ds/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2025-01-16)
 
 # 1.0.0-beta.1 (2025-01-16)
