@@ -31,6 +31,7 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
+        prepareCmd: "npm version ${nextRelease.version} --workspaces --no-git-tag-version",
         publishCmd: "npm publish --workspace=@littleroom-ui/react --workspace=@littleroom-ui/tokens",
       },
     ],
