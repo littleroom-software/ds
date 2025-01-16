@@ -74,34 +74,19 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
-      - name: Create npm tags
-        run: |
-          npm dist-tag add @littleroom-ui/react@latest beta || true
-          npm dist-tag add @littleroom-ui/tokens@latest beta || true
-
-      - name: Build and Release @littleroom-ui/react
+      - name: Build and Release Packages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          cd packages/react
-          npx turbo build
-          npx semantic-release
+        run: npx semantic-release
 
-      - name: Build and Release @littleroom-ui/tokens
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          cd packages/tokens
-          npx turbo build
-          npx semantic-release
-
-  deploy-storybook-prod:
-    name: Deploy Production Storybook
-    needs: lint
+  deploy-storybook:
+    name: Deploy Storybook
+    needs: [lint, release]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')
 
     steps:
       - name: Checkout
@@ -129,39 +114,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./apps/docs/storybook-static
-          publish_branch: gh-pages
-
-  deploy-storybook-dev:
-    name: Deploy Development Storybook
-    needs: lint
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Dependencies
-        run: npx turbo build --filter=@littleroom-ui/react --filter=@littleroom-ui/tokens
-
-      - name: Build Storybook
-        run: |
-          cd apps/docs
-          npm run build-storybook
-
-      - name: Deploy to GitHub Pages Dev
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./apps/docs/storybook-static
-          publish_branch: gh-pages-dev
-          destination_dir: dev
+          publish_branch: ${{ github.ref == 'refs/heads/main' && 'gh-pages' || 'gh-pages-dev' }}
+          destination_dir: ${{ github.ref == 'refs/heads/main' && '' || 'dev' }}
