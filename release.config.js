@@ -6,11 +6,6 @@ module.exports = {
       prerelease: "beta",
       channel: "beta",
     },
-    {
-      name: "*",
-      prerelease: "alpha",
-      channel: "alpha",
-    },
   ],
   plugins: [
     [
