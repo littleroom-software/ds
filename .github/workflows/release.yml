@@ -11,9 +11,11 @@ on:
       - dev
 
 jobs:
-  lint:
-    name: Lint
+  install:
+    name: Install Dependencies
     runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-key.outputs.value }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,15 +26,84 @@ jobs:
           node-version: 20
           cache: "npm"
 
+      - name: Generate cache key
+        id: cache-key
+        run: echo "value=${{ hashFiles('**/package-lock.json') }}" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-npm-${{ steps.cache-key.outputs.value }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       - name: Install dependencies
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm ci
+
+  lint:
+    name: Lint
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-npm-${{ needs.install.outputs.cache-key }}
 
       # - name: Run lint
       #   run: npm run lint
 
+  build:
+    name: Build
+    needs: [install, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-npm-${{ needs.install.outputs.cache-key }}
+
+      - name: Build packages
+        run: npx turbo build --filter=@littleroom-ui/react --filter=@littleroom-ui/tokens
+
+      - name: Cache build output
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/dist
+            **/build
+          key: ${{ runner.os }}-build-${{ github.sha }}
+
   release:
     name: Release
-    needs: lint
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -60,10 +131,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Restore dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-npm-${{ needs.install.outputs.cache-key }}
+
+      - name: Restore build output
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/dist
+            **/build
+          key: ${{ runner.os }}-build-${{ github.sha }}
 
       - name: Setup git config
         run: |
@@ -82,7 +165,7 @@ jobs:
 
   deploy-storybook:
     name: Deploy Storybook
-    needs: [lint, release]
+    needs: release
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -96,13 +179,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Restore dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-npm-${{ needs.install.outputs.cache-key }}
 
-      - name: Build Dependencies
-        run: npx turbo build --filter=@littleroom-ui/react --filter=@littleroom-ui/tokens
+      - name: Restore build output
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/dist
+            **/build
+          key: ${{ runner.os }}-build-${{ github.sha }}
 
       - name: Build Storybook
         run: |

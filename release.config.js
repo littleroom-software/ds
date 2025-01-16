@@ -37,7 +37,6 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
-        prepareCmd: "npm run build --workspace=@littleroom-ui/react && npm run build --workspace=@littleroom-ui/tokens",
         publishCmd: "npm publish --workspace=@littleroom-ui/react --workspace=@littleroom-ui/tokens",
       },
     ],
