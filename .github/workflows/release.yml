@@ -74,7 +74,12 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
 
-      - name: Build and Release @littleroom/react
+      - name: Create npm tags
+        run: |
+          npm dist-tag add @littleroom-ui/react@latest beta || true
+          npm dist-tag add @littleroom-ui/tokens@latest beta || true
+
+      - name: Build and Release @littleroom-ui/react
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -83,7 +88,7 @@ jobs:
           npx turbo build
           npx semantic-release
 
-      - name: Build and Release @littleroom/tokens
+      - name: Build and Release @littleroom-ui/tokens
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -112,7 +117,7 @@ jobs:
         run: npm ci
 
       - name: Build Dependencies
-        run: npx turbo build --filter=@littleroom/react --filter=@littleroom/tokens
+        run: npx turbo build --filter=@littleroom-ui/react --filter=@littleroom-ui/tokens
 
       - name: Build Storybook
         run: |
@@ -146,7 +151,7 @@ jobs:
         run: npm ci
 
       - name: Build Dependencies
-        run: npx turbo build --filter=@littleroom/react --filter=@littleroom/tokens
+        run: npx turbo build --filter=@littleroom-ui/react --filter=@littleroom-ui/tokens
 
       - name: Build Storybook
         run: |

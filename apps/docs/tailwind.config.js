@@ -1,5 +1,5 @@
 // import flowbite from 'flowbite-react/tailwind';
-import { tailwind } from "@littleroom/react";
+import { tailwind } from "@littleroom-ui/react";
 
 /** @type {import('tailwindcss').Config} */
 export default {

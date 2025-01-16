@@ -1,4 +1,4 @@
-import { Button } from "@littleroom/react";
+import { Button } from "@littleroom-ui/react";
 
 export function App() {
   return (

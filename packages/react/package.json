@@ -1,6 +1,6 @@
 {
-  "name": "@littleroom/react",
-  "version": "1.0.0-beta.1",
+  "name": "@littleroom-ui/react",
+  "version": "0.0.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -14,9 +14,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@littleroom/eslint-config": "*",
-    "@littleroom/tokens": "*",
-    "@littleroom/typescript-config": "*",
+    "@littleroom-ui/eslint-config": "*",
+    "@littleroom-ui/tokens": "*",
+    "@littleroom-ui/typescript-config": "*",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"
   },

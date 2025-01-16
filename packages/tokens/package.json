@@ -1,5 +1,5 @@
 {
-  "name": "@littleroom/tokens",
+  "name": "@littleroom-ui/tokens",
   "version": "0.0.0",
   "description": "",
   "main": "./dist/index.js",
@@ -14,8 +14,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@littleroom/typescript-config": "*",
-    "@littleroom/eslint-config": "*",
+    "@littleroom-ui/typescript-config": "*",
+    "@littleroom-ui/eslint-config": "*",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"
   },

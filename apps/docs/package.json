@@ -11,8 +11,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@littleroom/tokens": "*",
-    "@littleroom/react": "*",
+    "@littleroom-ui/tokens": "*",
+    "@littleroom-ui/react": "*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
