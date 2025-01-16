@@ -1,6 +1,6 @@
 {
-  "name": "@nebula/tokens",
-  "version": "1.0.0",
+  "name": "@littleroom/tokens",
+  "version": "0.0.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -14,9 +14,15 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@nebula/typescript-config": "*",
-    "@nebula/eslint-config": "*",
+    "@littleroom/typescript-config": "*",
+    "@littleroom/eslint-config": "*",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist/**"
+  ]
 }

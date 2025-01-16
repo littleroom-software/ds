@@ -32,12 +32,12 @@ interface Content {
 }
 
 function content({ base = "./" }: Content = {}) {
-  const path = "node_modules/@nebula/react/dist/**/*.mjs"
+  const path = "node_modules/@littleroom/react/dist/**/*.mjs";
 
   return `${base}${path}`;
 }
 
 export const tailwind = {
   content,
-  // plugin: () => require("tailwindcss")("node_modules/@nebula/react/dist/tailwind.config.js"),
-} 
+  // plugin: () => require("tailwindcss")("node_modules/@littleroom/react/dist/tailwind.config.js"),
+};
