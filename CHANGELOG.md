@@ -1,3 +1,10 @@
+# [1.0.0-beta.4](https://github.com/littleroom-software/ds/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2025-01-16)
+
+
+### Bug Fixes
+
+* **ci:** specify npm publish tag ([2519d7e](https://github.com/littleroom-software/ds/commit/2519d7e690ad31f57cd9a3ecba1af4ea60541fd9))
+
 # [1.0.0-beta.3](https://github.com/littleroom-software/ds/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2025-01-16)
 
 
